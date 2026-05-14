@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS-FOUNDATION OF GOODNESS | System Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --uc-orange: #f58220; 
+            --uc-orange-light: #ff9d4d;
+            --uc-gradient: linear-gradient(135deg, #f58220 0%, #ff6b3d 100%);
+            --uc-white: #ffffff;
+            --uc-bg: #fffbf8; 
+            --uc-text: #2d3436;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            background-color: var(--uc-bg);
+            font-family: 'Outfit', sans-serif;
+            color: var(--uc-text);
+            overflow-x: hidden;
+        }
+
+        /* --- Unified Sidebar Navigation --- */
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            background: var(--uc-white);
+            border-right: 1px solid rgba(245, 130, 32, 0.1);
+            z-index: 1040;
+            padding: 2rem 1rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .brand-logo {
+            padding: 0 1rem 2rem;
+            border-bottom: 2px solid var(--uc-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link {
+            border-radius: 12px;
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            color: #636e72;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-link i { font-size: 1.2rem; margin-right: 15px; }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--uc-gradient);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(245, 130, 32, 0.3);
+        }
+
+        /* --- Layout Framework Elements --- */
+        .top-nav {
+            margin-left: var(--sidebar-width);
+            padding: 1.2rem 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0; z-index: 999;
+            border-bottom: 1px solid rgba(245, 130, 32, 0.05);
+        }
+
+        .main-container {
+            margin-left: var(--sidebar-width);
+            padding: 2.5rem 3rem;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Settings Panel Elements --- */
+        .settings-panel {
+            background: var(--uc-white);
+            border: 1px solid rgba(245, 130, 32, 0.06);
+            border-radius: 24px;
+            padding: 2.2rem;
+            box-shadow: 0 15px 40px rgba(245, 130, 32, 0.02);
+            margin-bottom: 2rem;
+        }
+
+        .settings-header-pill {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-uppercase;
+            letter-spacing: 1px;
+            color: var(--uc-orange);
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Form Controls Theming */
+        .form-control-uc {
+            background-color: #f8f9fa;
+            border: 1px solid #e1e2e6;
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: var(--uc-text);
+            transition: all 0.25s ease;
+        }
+
+        .form-control-uc:focus {
+            background-color: var(--uc-white);
+            border-color: var(--uc-orange);
+            box-shadow: 0 0 0 4px rgba(245, 130, 32, 0.1);
+            outline: none;
+        }
+
+        /* Dynamic Toggle Switch Styles */
+        .form-switch .form-check-input-uc {
+            width: 2.5em;
+            height: 1.35em;
+            background-color: #e1e2e6;
+            border-image: none;
+            border: none;
+            cursor: pointer;
+            transition: background-position .15s ease-in-out;
+        }
+
+        .form-switch .form-check-input-uc:checked {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23fff' d='M8.388,10.049l4.76-4.873c0.303-0.31,0.297-0.804-0.012-1.105c-0.309-0.304-0.803-0.293-1.105,0.012L6.726,9.516 c-0.303,0.31-0.296,0.805,0.012,1.105l5.433,5.307c0.152,0.148,0.35,0.223,0.547,0.223c0.207,0,0.414-0.082,0.57-0.243 c0.314-0.324,0.311-0.826-0.013-1.14L8.388,10.049z'/%3e%3c/svg%3e");
+            background-color: var(--uc-orange);
+        }
+
+        .btn-uc-save {
+            background: var(--uc-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 14px 28px;
+            font-weight: 600;
+            transition: 0.3s all;
+        }
+
+        .btn-uc-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(245, 130, 32, 0.25);
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            #sidebar { transform: translateX(-100%); }
+            #sidebar.show { transform: translateX(0); }
+            .top-nav, .main-container { margin-left: 0; padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="brand-logo text-center">
+        <h4 class="fw-bold m-0" style="color: var(--uc-orange);">FOG<span class="text-dark">LMS</span></h4>
+        <small class="text-muted fw-semibold">FOUNDATION OF GOODNESS</small>
+    </div>
+    <nav class="nav-custom">
+        <a href="index.html" class="nav-link"><i class="bi bi-speedometer2"></i> Portal Home</a>
+        <a href="admission2.html" class="nav-link"><i class="bi bi-journal-plus"></i> Student Admission</a>
+        <a href="myclass2.html" class="nav-link"><i class="bi bi-mortarboard"></i> My Classes</a>
+        <a href="matrix2.html" class="nav-link"><i class="bi bi-calendar-check"></i> Attendance Matrix</a>
+        <a href="certi2.html" class="nav-link"><i class="bi bi-patch-check"></i> Certifications</a>
+        <hr class="text-muted opacity-25">
+        <a href="settings2.html" class="nav-link active"><i class="bi bi-gear"></i> Settings</a>
+    </nav>
+</aside>
+
+<header class="top-nav">
+    <div class="d-flex align-items-center">
+        <button class="btn btn-light d-lg-none me-3" type="button" onclick="toggleSidebar()">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <span class="text-muted small fw-bold"><i class="bi bi-sliders me-2 text-orange"></i>CORE SYSTEM SETTINGS ENGINE</span>
+    </div>
+    <div class="user-info d-flex align-items-center">
+        <div class="bg-light rounded-circle p-2 border"><i class="bi bi-person-circle fs-4 text-secondary"></i></div>
+    </div>
+</header>
+
+<main class="main-container">
+    <div class="container-fluid p-0" style="max-width: 960px;">
+        
+        <div class="mb-5">
+            <h2 class="fw-bold text-dark m-0">System Control Center</h2>
+            <p class="text-muted m-0">Modify platform preferences, alter validation protocols, and manage notification targets.</p>
+        </div>
+
+        <form id="systemSettingsControlForm" onsubmit="saveConfigurationData(event)">
+            
+            <div class="settings-panel">
+                <span class="settings-header-pill">Identity Framework</span>
+                <h5 class="fw-bold text-dark mb-4">Node Profile Configuration</h5>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label text-muted small fw-bold text-uppercase">Platform Operator Title</label>
+                        <input type="text" class="form-control form-control-uc" value="System Administrator" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-muted small fw-bold text-uppercase">Notification Endpoint Email</label>
+                        <input type="email" class="form-control form-control-uc" value="admin@unconditionalcompassion.org" required>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label text-muted small fw-bold text-uppercase">Default Operational Tracking Campus</label>
+                        <select class="form-select form-control-uc">
+                            <option selected>Colombo Central Operations Node</option>
+                            <option>Gampaha Virtual Cluster Hub</option>
+                            <option>Global Remote Infrastructure</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <span class="settings-header-pill text-danger">Security Matrix</span>
+                <h5 class="fw-bold text-dark mb-4">Credentials & Verification Rules</h5>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label text-muted small fw-bold text-uppercase">Current Root Password</label>
+                        <input type="password" class="form-control form-control-uc" placeholder="••••••••••••" autocomplete="current-password">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-muted small fw-bold text-uppercase">New Access Password Matrix</label>
+                        <input type="password" class="form-control form-control-uc" placeholder="Leave blank to maintain current" autocomplete="new-password">
+                    </div>
+                </div>
+                
+                <hr class="my-4 text-muted opacity-25">
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h6 class="fw-bold text-dark mb-0">Enforce Cryptographic Certificate Hashing</h6>
+                        <small class="text-muted">Automatically append secure integrity SHA-256 validation IDs upon issuance tasks.</small>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input form-check-input-uc" type="checkbox" id="cryptoToggleInput" checked>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="fw-bold text-dark mb-0">Automated Tardy Status Flagging</h6>
+                        <small class="text-muted">Instantly move student entries to "Remedial Track" if attendance score calculations drop under 75%.</small>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input form-check-input-uc" type="checkbox" id="attendanceFlagToggleInput" checked>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-panel">
+                <span class="settings-header-pill text-success">Storage Cloud</span>
+                <h5 class="fw-bold text-dark mb-4">Data Ledger Orchestration</h5>
+                
+                <div class="p-3 bg-light rounded-3 d-flex align-items-center justify-content-between border border-light">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-white p-2 rounded border text-muted fs-4"><i class="bi bi-cloud-arrow-up-fill"></i></div>
+                        <div>
+                            <strong class="d-block small text-dark">Automated Daily Sync Ledger</strong>
+                            <span class="text-muted text-xs d-block" style="font-size:0.8rem;">Last backup sync committed: Today at 04:00 AM</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-dark px-3 rounded-2 fw-bold" onclick="alert('Forcing real-time operational schema replication sequence...')">Sync Now</button>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-3 align-items-center mb-5">
+                <button type="button" class="btn btn-link text-decoration-none text-secondary fw-semibold small" onclick="location.reload();">Discard Dynamic Changes</button>
+                <button type="submit" class="btn btn-uc-save shadow-sm">
+                    <i class="bi bi-cloud-check-fill me-2"></i> Save System Parameters
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('show');
+    }
+
+    // Settings Commit Verification Handler Function Stub
+    function saveConfigurationData(event) {
+        event.preventDefault();
+        alert("System Architecture Signal: Root structural adjustments successfully compiled and locked into database storage clusters.");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS-FOUNDATION OF GOODNESS | Advanced LMS Enterprise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --uc-orange: #f58220; 
+            --uc-orange-light: #ff9d4d;
+            --uc-gradient: linear-gradient(135deg, #f58220 0%, #ff6b3d 100%);
+            --uc-gradient-dark: linear-gradient(135deg, #e06d12 0%, #d44d22 100%);
+            --uc-white: #ffffff;
+            --uc-bg: #fffbf8; 
+            --uc-text: #2d3436;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            background-color: var(--uc-bg);
+            font-family: 'Outfit', sans-serif;
+            color: var(--uc-text);
+            overflow-x: hidden;
+        }
+
+        /* --- Elegant Sidebar --- */
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: var(--uc-white);
+            border-right: 1px solid rgba(245, 130, 32, 0.1);
+            z-index: 1040;
+            padding: 2rem 1rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .brand-logo {
+            padding: 0 1rem 2rem;
+            border-bottom: 2px solid var(--uc-bg);
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link {
+            border-radius: 12px;
+            margin-bottom: 8px;
+            padding: 12px 18px;
+            color: #636e72;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-link i { font-size: 1.2rem; margin-right: 15px; }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--uc-gradient);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(245, 130, 32, 0.3);
+        }
+
+        /* --- Modern Layout Framework --- */
+        .top-nav {
+            margin-left: var(--sidebar-width);
+            padding: 1.2rem 3rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid rgba(245, 130, 32, 0.05);
+        }
+
+        .main-container {
+            margin-left: var(--sidebar-width);
+            padding: 2.5rem 3rem;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Premium Cards & Modules --- */
+        .analytics-card {
+            background: var(--uc-white);
+            border: 1px solid rgba(245, 130, 32, 0.06);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .analytics-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(245, 130, 32, 0.04);
+        }
+
+        .lms-card {
+            background: var(--uc-white);
+            border: none;
+            border-radius: 24px;
+            box-shadow: 0 20px 45px rgba(245, 130, 32, 0.04);
+            overflow: hidden;
+            border: 1px solid rgba(245, 130, 32, 0.05);
+        }
+
+        .card-accent-bar {
+            height: 8px;
+            background: var(--uc-gradient);
+        }
+
+        .card-body-content { padding: 3.5rem 4rem; }
+
+        /* --- Custom Interactive Forms --- */
+        .form-section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--uc-orange);
+            border-bottom: 2px solid var(--uc-bg);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #889296;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #f1f2f6;
+            border-radius: 14px;
+            padding: 14px 18px;
+            background: #fdfdfd;
+            transition: all 0.3s ease;
+            color: var(--uc-text);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--uc-orange);
+            box-shadow: 0 0 0 4px rgba(245, 130, 32, 0.12);
+            background: #fff;
+        }
+
+        /* --- Smart Selection Grid --- */
+        .course-badge-checkbox {
+            display: none;
+        }
+        .course-selector-card {
+            border: 2px solid #f1f2f6;
+            border-radius: 16px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: #fdfdfd;
+            position: relative;
+            height: 100%;
+        }
+        .course-selector-card:hover {
+            border-color: var(--uc-orange-light);
+            background: var(--uc-white);
+        }
+        .course-badge-checkbox:checked + .course-selector-card {
+            border-color: var(--uc-orange);
+            background: rgba(245, 130, 32, 0.03);
+            box-shadow: 0 8px 20px rgba(245, 130, 32, 0.06);
+        }
+        .course-badge-checkbox:checked + .course-selector-card::after {
+            content: "\b7";
+            font-family: "bootstrap-icons";
+            content: "\f272";
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            color: var(--uc-orange);
+            font-size: 1.25rem;
+        }
+
+        /* --- Dynamic Matrix UI --- */
+        .analysis-badge {
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .btn-uc-primary {
+            background: var(--uc-gradient);
+            border: none;
+            border-radius: 14px;
+            padding: 16px 24px;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+            transition: 0.4s all;
+            box-shadow: 0 10px 20px rgba(245, 130, 32, 0.2);
+        }
+
+        .btn-uc-primary:hover {
+            background: var(--uc-gradient-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px rgba(245, 130, 32, 0.35);
+            color: white;
+        }
+
+        /* --- Responsive Viewports Framework --- */
+        @media (max-width: 992px) {
+            #sidebar { transform: translateX(-100%); }
+            #sidebar.show { transform: translateX(0); }
+            .top-nav, .main-container { margin-left: 0; padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<aside id="sidebar">
+    <div class="brand-logo text-center position-relative">
+        <h4 class="fw-bold m-0" style="color: var(--uc-orange);">FOG<span class="text-dark">LMS</span></h4>
+        <small class="text-muted fw-semibold">FOUNDATION OF GOODNESS</small>
+    </div>
+    <nav class="nav-custom">
+        <a href="index.html" class="nav-link"><i class="bi bi-speedometer2"></i> Portal Home</a>
+        <a href="admission2.html" class="nav-link active"><i class="bi bi-journal-plus"></i> Student Admission</a>
+        <a href="myclass2.html" class="nav-link"><i class="bi bi-mortarboard"></i> My Classes</a>
+        <a href="matrix2.html" class="nav-link"><i class="bi bi-calendar-check"></i> Attendance Matrix</a>
+        <a href="certi2.html" class="nav-link"><i class="bi bi-patch-check"></i> Certifications</a>
+        <hr class="text-muted opacity-25">
+        <a href="settings2.html" class="nav-link"><i class="bi bi-gear"></i> Settings</a>
+    </nav>
+</aside>
+
+<header class="top-nav">
+    <div class="d-flex align-items-center">
+        <button class="btn btn-light d-lg-none me-3" type="button" onclick="toggleSidebar()">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <div class="search-bar d-none d-sm-block">
+            <span class="text-muted small fw-bold tracking-wider"><i class="bi bi-shield-check text-orange me-2"></i>PROJECT: ACADEMIC DATA SYSTEM 2026</span>
+        </div>
+    </div>
+    <div class="user-info d-flex align-items-center">
+        <div class="text-end me-3">
+            <p class="mb-0 fw-bold small">System Administrator</p>
+            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-2">Operational Node</span>
+        </div>
+        <div class="bg-light rounded-circle p-2 border">
+            <i class="bi bi-person-circle fs-4 text-secondary"></i>
+        </div>
+    </div>
+</header>
+
+<main class="main-container">
+    <div class="container-fluid p-0">
+        
+        <div class="row g-4 mb-5">
+            <div class="col-xl-3 col-sm-6">
+                <div class="analytics-card d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-muted small fw-bold text-uppercase d-block mb-1">Active Registrations</span>
+                        <h3 class="fw-bold m-0">1,482</h3>
+                    </div>
+                    <div class="bg-primary-subtle text-primary rounded-3 p-3"><i class="bi bi-people-fill fs-4"></i></div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="analytics-card d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-muted small fw-bold text-uppercase d-block mb-1">Global Attendance</span>
+                        <h3 class="fw-bold m-0 text-success">94.6%</h3>
+                    </div>
+                    <div class="bg-success-subtle text-success rounded-3 p-3"><i class="bi bi-calendar2-check-fill fs-4"></i></div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="analytics-card d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-muted small fw-bold text-uppercase d-block mb-1">Active Pathways</span>
+                        <h3 class="fw-bold m-0" style="color: var(--uc-orange);">18</h3>
+                    </div>
+                    <div class="bg-warning-subtle text-warning rounded-3 p-3"><i class="bi bi-book-half fs-4"></i></div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6">
+                <div class="analytics-card d-flex align-items-center justify-content-between">
+                    <div>
+                        <span class="text-muted small fw-bold text-uppercase d-block mb-1">System Integrity</span>
+                        <h3 class="fw-bold m-0 text-info">100%</h3>
+                    </div>
+                    <div class="bg-info-subtle text-info rounded-3 p-3"><i class="bi bi-cpu-fill fs-4"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                
+                <div class="lms-card shadow">
+                    <div class="card-accent-bar"></div>
+                    <div class="card-body-content">
+                        
+                        <div class="mb-5">
+                            <h2 class="fw-bold text-dark mb-2">Enroll New Student</h2>
+                            <p class="text-muted m-0">Instate a new candidate with course matrices, custom configurations, and automated grade metrics evaluation.</p>
+                        </div>
+
+                        <form method="post" action="data.php" onsubmit="return validateSubmissionForm()">
+                            <div class="row g-4">
+                                
+                                <div class="col-12"><div class="form-section-title"><i class="bi bi-fingerprint me-2"></i>1. Core Security & Identity Anchors</div></div>
+                                <div class="col-md-6">
+                                    <label class="form-label">System Generated Index Number</label>
+                                    <input type="text" name="txtno" class="form-control" placeholder="UC-2026-XXXX" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">NIC / National Identity Document</label>
+                                    <input type="text" name="txtnic" class="form-control" placeholder="Enter Valid Identity Credentials" required>
+                                </div>
+
+                                <div class="col-12 pt-3"><div class="form-section-title"><i class="bi bi-person-vcard me-2"></i>2. Student Demographics & Profiles</div></div>
+                                <div class="col-md-8">
+                                    <label class="form-label">Student Full Name (Official Registry)</label>
+                                    <input type="text" name="txtna" class="form-control" placeholder="Legal full name as per certified document sets" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Gender Designation</label>
+                                    <select class="form-select" name="txtgender" required>
+                                        <option value="" disabled selected>Select Registry Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Non-Binary / Undisclosed</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Mailing & Permanent Household Address</label>
+                                    <input type="text" name="txtad" class="form-control" placeholder="Complete verified street address details">
+                                </div>
+
+                                <div class="col-12 pt-3"><div class="form-section-title"><i class="bi bi-chat-left-dots me-2"></i>3. Communication Channels</div></div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Primary Mobile Connectivity Line</label>
+                                    <input type="tel" name="txttel" class="form-control" placeholder="+94 7X XXX XXXX">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Automated WhatsApp Broadcast Destination Target</label>
+                                    <input type="tel" name="txtwp" class="form-control" placeholder="For automated class reminders & warnings">
+                                </div>
+
+                                <div class="col-12 pt-3"><div class="form-section-title"><i class="bi bi-grid-3x3-gap me-2"></i>4. Dynamic Course & Track Allocations</div></div>
+                                <div class="col-12">
+                                    <p class="text-muted small mb-3">Select one or more available tracks for immediate enrollment routing:</p>
+                                    <div class="row g-3">
+                                        <div class="col-xl-4 col-md-6">
+                                            <label class="w-100 h-100">
+                                                <input type="checkbox" name="courses[]" value="WebDev" class="course-badge-checkbox" onchange="updateCourseSelectionCount()">
+                                                <div class="course-selector-card">
+                                                    <h6 class="fw-bold mb-1">Full Stack Web Engineering</h6>
+                                                    <p class="text-muted small mb-2 text-truncate">HTML5, CSS, Bootstrap 5, Javascript Architecture</p>
+                                                    <span class="badge bg-orange-subtle text-dark border p-2 py-1 small rounded">12 Weeks Track</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6">
+                                            <label class="w-100 h-100">
+                                                <input type="checkbox" name="courses[]" value="EngLit" class="course-badge-checkbox" onchange="updateCourseSelectionCount()">
+                                                <div class="course-selector-card">
+                                                    <h6 class="fw-bold mb-1">Professional English & Speech</h6>
+                                                    <p class="text-muted small mb-2 text-truncate">Executive communication and corporate presentation syntax.</p>
+                                                    <span class="badge bg-orange-subtle text-dark border p-2 py-1 small rounded">8 Weeks Track</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="col-xl-4 col-md-6">
+                                            <label class="w-100 h-100">
+                                                <input type="checkbox" name="courses[]" value="DataSci" class="course-badge-checkbox" onchange="updateCourseSelectionCount()">
+                                                <div class="course-selector-card">
+                                                    <h6 class="fw-bold mb-1">Data Science Fundamentals</h6>
+                                                    <p class="text-muted small mb-2 text-truncate">Structured querying languages, matrix manipulation & modeling</p>
+                                                    <span class="badge bg-orange-subtle text-dark border p-2 py-1 small rounded">16 Weeks Track</span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 text-end">
+                                        <span class="badge bg-dark rounded-pill px-3 py-2" id="courseCounter">0 Courses Designated</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 pt-3"><div class="form-section-title"><i class="bi bi-graph-up-arrow me-2"></i>5. Dynamic Intake Performance Evaluation</div></div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Initial Entry Assessment Mark (%)</label>
+                                    <input type="number" id="markField" name="txtma" class="form-control" placeholder="Range scale 0 to 100" min="0" max="100" oninput="runLivePerformanceAnalysis()">
+                                </div>
+                                <div class="col-md-6 d-flex align-items-end">
+                                    <div class="w-100 p-3 bg-light rounded-3 d-flex align-items-center justify-content-between" style="height: 58px; border: 2px dashed #e1e2e6;">
+                                        <span class="small text-muted fw-bold text-uppercase">Analytical Tier Assessment:</span>
+                                        <div id="tierOutput" class="analysis-badge bg-secondary text-white py-1 px-3 fs-7 rounded-pill">Awaiting Metrics</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 pt-4">
+                                    <button type="submit" class="btn btn-uc-primary w-100 py-3">
+                                        <i class="bi bi-shield-check-fill me-2 fs-5"></i>Authorize & Commit Secure Records To Enterprise Clusters
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <p class="text-muted small">&copy; 2026 <strong>Unconditional Compassion Foundation</strong>. Infrastructure Layer Engine Core v4.1.0.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Mobile Off-canvas Sidebar Controls
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('show');
+    }
+
+    // Interactive Course Counter Engine
+    function updateCourseSelectionCount() {
+        const selectedCount = document.querySelectorAll('.course-badge-checkbox:checked').length;
+        const counterTag = document.getElementById('courseCounter');
+        counterTag.textContent = `${selectedCount} Course${selectedCount === 1 ? '' : 's'} Designated`;
+        if(selectedCount > 0) {
+            counterTag.className = "badge bg-success rounded-pill px-3 py-2 animate-pulse";
+        } else {
+            counterTag.className = "badge bg-dark rounded-pill px-3 py-2";
+        }
+    }
+
+    // Dynamic Live Mark Classification Engine
+    function runLivePerformanceAnalysis() {
+        const markInput = document.getElementById('markField').value;
+        const tierOutput = document.getElementById('tierOutput');
+        
+        if (markInput === "") {
+            tierOutput.textContent = "Awaiting Metrics";
+            tierOutput.className = "analysis-badge bg-secondary text-white py-1 px-3 fs-7 rounded-pill";
+            return;
+        }
+
+        const score = parseFloat(markInput);
+
+        if (score < 0 || score > 100) {
+            tierOutput.textContent = "Invalid Out of Bounds Score";
+            tierOutput.className = "analysis-badge bg-danger text-white py-1 px-3 fs-7 rounded-pill";
+        } else if (score >= 75) {
+            tierOutput.textContent = "Tier Alpha: Distinction Elite";
+            tierOutput.className = "analysis-badge bg-success text-white py-1 px-3 fs-7 rounded-pill";
+        } else if (score >= 60) {
+            tierOutput.textContent = "Tier Beta: Merit Path";
+            tierOutput.className = "analysis-badge bg-info text-dark py-1 px-3 fs-7 rounded-pill";
+        } else if (score >= 40) {
+            tierOutput.textContent = "Tier Gamma: Certified Pass";
+            tierOutput.className = "analysis-badge bg-warning text-dark py-1 px-3 fs-7 rounded-pill";
+        } else {
+            tierOutput.textContent = "Tier Omega: Needs Remedial Intervention";
+            tierOutput.className = "analysis-badge bg-danger text-white py-1 px-3 fs-7 rounded-pill";
+        }
+    }
+
+    // Comprehensive Intercept Validation Layer 
+    function validateSubmissionForm() {
+        const selectedCount = document.querySelectorAll('.course-badge-checkbox:checked').length;
+        if (selectedCount === 0) {
+            alert("Security Protocol Halt: Student entry cannot progress without designating at least one Active Learning Course Track.");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>
